@@ -1,0 +1,31 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+
+<div class="content">
+    <h1>Congragulations!{{name}}</h1>
+    <h3>To begin using this tool all you need is to following steps</h3>
+    <h4>Step 1: Enter a topic in the textbox below </h4>
+    <h4>Step 2: Press enter key on your keyboard to submit the topic
+        <br>You will see information about that topic on the window
+    </h4>
+    <h4>Step 3:Take your time to read the content about your topic</h4>
+    <h4>Step 4:Click on Review yourself link below the generated content</h4>
+    <h4>Step 5:Read the question Carefully to understand what is nedded</h4>
+    <h4>Step 6:Input your answer in the textsrea below where it is written enter your answer here</h4>
+    <h4>Step 7:Click enter key to confirm Your answer and get the results</h4>
+
+    <a href="{% url 'home' %}">Go back home</a>
+</div>
+
+{% if request.user.is_authenticated %}
+        
+        
+{% include 'searchbar.html' %}
+
+
+
+{% endif %}
+
+{% endblock content %}

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <title>My Django App</title>
+        <style>
+            @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
+    
+            :root {
+                --color-main: #71c6dd;
+                --color-main-light: #e1f6fb;
+                --color-dark: #3f4156;
+                --color-dark-medium: #51546e;
+                --color-dark-light: #696d97;
+                --color-light: #e5e5e5;
+                --color-gray: #8b8b8b;
+                --color-light-gray: #b2bdbd;
+                --color-bg: #2d2d39;
+                --color-success: #5dd693;
+                --color-error: #fc4b0b;
+            }
+    
+            /*========== base styles ==========*/
+    
+            * {
+                font-family: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+                    "Helvetica Neue", sans-serif;
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                text-rendering: optimizeLegibility;
+                /* color: inherit; */
+                font-size: inherit;
+            }
+    
+            html {
+            font-size: 56.25%;
+            }
+    
+            @media only screen and (min-width: 1200px) {
+            html {
+                font-size: 62.5%;
+            }
+            }
+    
+            @media only screen and (min-width: 2100px) {
+            html {
+                font-size: 75%;
+            }
+            }
+    
+            body {
+                line-height: 1.6;
+                font-weight: 400;
+                font-size: 1.5rem;
+                color: var(--color-light-gray);
+                background-color: var(--color-bg);
+                min-height: 100vh;
+            }
+    
+            img {
+                width: 100%;
+            }
+    
+            a {
+                display: inline-block;
+                color: var(--color-main);
+                text-decoration: none;
+            }
+    
+            .navbar {
+                position: fixed;
+                left: 0;
+                top: 0;
+                height: 100vh;
+                width: 300px;
+                background-color: var(--color-dark);
+                color: white;
+                overflow-y: auto;
+            }
+            .nav-container{
+                margin-top: 50px;
+                padding-bottom: 20px;
+                margin-left: 25px;
+            }
+            .nav-container a{
+                margin-top: 50px;
+                padding-bottom: 20px;
+            }
+        
+    
+            
+    
+            .navbar h1 {
+            font-weight: 700;
+            font-size: 2rem;
+            color: var(--color-light);
+            }
+            
+            @media screen and (max-width: 500px) {
+            .mobile-menu .header__search {
+                display: block;
+                margin-bottom: 2.4rem;
+            }
+            }
+    
+            .content {
+                margin-left: 320px; /* Adjust based on navbar width */
+                margin-bottom: 200px; /* Adjust based on search bar height */
+                padding: 20px;
+            }
+    
+            .search-bar {
+                position: fixed;
+                bottom: 0;
+                width: 75%;
+                margin-left: 320px;
+                margin-bottom:10px; 
+                height: 100px;
+                background-color: #333;
+                color: white;
+                padding: 10px;
+            }
+            .header__search > label {
+                background-color: var(--color-dark-medium);
+                padding: 2.7rem 1rem;
+                display: flex;
+                align-items: center;
+                gap: 5rem;
+                border-radius: 10px;
+                }
+    
+            .header__search svg {
+                fill: var(--color-gray);
+                width: 2rem;
+                height: 2rem;
+                margin-left: 1rem;
+                }
+    
+            .header__search input {
+                width: 30rem;
+                background: transparent;
+                border: none;
+                outline: none;
+                color: var(--color-light);
+                }
+    
+            @media screen and (max-width: 800px) {
+            .header__search input {
+                    width: 20rem;
+                }
+                }
+                .messages{
+                    margin-left: 400px;
+                }
+                .layout__box {
+            width: 90%;
+            max-width: 48rem;
+            min-height: 40rem;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -46%);
+            background-color: var(--color-dark);
+            border-radius: 1rem;
+            box-shadow: 1px 1px 6px 3px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            }
+
+            .layout__boxHeader {
+            display: flex;
+            padding: 1.5rem;
+            background-color: var(--color-dark-light);
+            }
+
+            .layout__boxTitle {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+            }
+
+            .layout__boxTitle h3 {
+            text-transform: uppercase;
+            font-weight: 500;
+            color: var(--color-light);
+            }
+
+            .layout__boxTitle svg {
+            width: 1.6rem;
+            height: 1.6rem;
+            fill: var(--color-main);
+            }
+
+            .layout__body {
+            margin: 3rem;
+            }
+
+            @media screen and (max-width: 900px) {
+            .activities,
+            .topics {
+                display: none;
+            }
+        }
+        .form__group {
+            margin-bottom: 2rem;
+            width: 100%;
+            }
+
+            .form__split {
+            display: flex;
+            gap: 1.5rem;
+            }
+
+            .form__group label {
+            display: block;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            }
+
+            .form__group input,
+            .form__group textarea,
+            .form__group select {
+            background: transparent;
+            border: 1px solid var(--color-dark-light);
+            padding: 1rem;
+            border-radius: 3px;
+            width: 100%;
+            color: var(--color-light);
+            font-weight: 500;
+            outline: none;
+            }
+
+            .form__group input:focus,
+            .form__group textarea:focus {
+            border-color: var(--color-main);
+            }
+
+            .form__group textarea {
+            background: transparent;
+            height: 10rem;
+            resize: none;
+            }
+
+            .form__group select {
+            color: var(--color-gray);
+            font-weight: 400;
+            }
+
+            .form__group select option {
+            background-color: var(--color-dark-light);
+            color: var(--color-light);
+            padding: 0 10rem;
+            }
+
+            .form__action {
+            display: flex;
+            justify-content: flex-end;
+            gap: 3rem;
+            }
+
+            .form__hide {
+            position: absolute;
+            left: -9999px;
+            }
+
+            .form__avatar label {
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: 500;
+            color: var(--color-main);
+            cursor: pointer;
+            }
+
+            .form__avatar label:hover {
+            text-decoration: underline;
+            }
+
+ 
+        </style>
+    </head>
+    <body>
+        <!-- Sidebar content goes here -->
+       
+        {% include 'navbar.html' %}
+        
+        
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+        {% block content %}
+    
+                
+        {% endblock %}
+        
+        
+        
+        <!-- Sesarchbar content goes here -->
+        
+       
+    </body>
+    </html>
+    
